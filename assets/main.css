@@ -1,0 +1,136 @@
+html, body {
+    max-width: 100%;
+    width: 100vw;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+
+    background: #3f3f3f;
+
+    font-family: 'Open Sans', sans-serif;
+    color: white;
+}
+
+a {
+    text-decoration: none;
+    color: #f0802a;
+}
+
+a:hover {
+    color: #ca652b;
+}
+
+h1, h2, h3, h4, h5, h6, .title, .heading {
+    font-family: 'Roboto', sans-serif;
+}
+
+header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 20vh;
+}
+
+header img {
+    height: 100%;
+}
+
+.header-description {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    flex-flow: column;
+    font-size: 25px;
+}
+
+.header-description * {
+    margin: 0;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.main-header {
+    text-align: center;
+    margin: 0;
+    color: #f0802a;
+    font-size: 1.75rem;
+}
+
+.date {
+    margin-top: 0;
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.companyContainer {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-template-rows: 1fr;
+    grid-template-areas: ". . . .";
+    grid-column-gap: 2rem;
+    grid-row-gap: 5vh;
+    padding: 0 2rem;
+}
+
+.company {
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    background: #333;
+    padding: 2rem;
+    border-radius: 25px;
+}
+
+.company * {
+    margin: 0.1rem;
+}
+
+.company .imgWrapper {
+    height: 10vh;
+    width: 75%;
+    margin: 0;
+    margin-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.company .companyLogo {
+    max-width: 66.66%;
+    max-height: 10vh;
+}
+
+.company blockquote {
+    height: 10vh;
+    overflow: auto;
+}
+
+.company textarea {
+    width: 90%;
+    height: 10vh;
+    color: inherit;
+    margin: 0;
+    border: 0;
+    background: transparent;
+    font-size: 1rem;
+    font-family: 'Open Sans', sans-serif;
+}
+
+.company .presentationInfo {
+    border-radius: 25px;
+    background: #555;
+    padding: 0.5rem;
+}
+
+.company .speedInterview {
+    color: #f0802a;
+}
+
+footer {
+    padding: 4rem;
+    padding-bottom: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2rem;
+}
