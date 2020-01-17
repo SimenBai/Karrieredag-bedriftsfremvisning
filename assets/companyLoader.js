@@ -3,7 +3,7 @@ function loadJSON(callback) {
     xObject.overrideMimeType("application/json");
     xObject.open("GET", "assets/bedrifter.json", true);
     xObject.onreadystatechange = function () {
-        if (xObject.readyState === 4 && xObject.status === "200") {
+        if (xObject.readyState == 4 && xObject.status == "200") {
             callback(xObject.responseText);
         }
     };
@@ -18,6 +18,15 @@ function init() {
 
 function addCompanies(json) {
     let companies = JSON.parse(json)["company"];
+    companies.sort((a, b) => {
+        if (a.name.toUpperCase() < b.name.toUpperCase()) {
+            return -1
+        }
+        if (a.name > b.name) {
+            return 1;
+        }
+        return 0;
+    });
     companies.forEach((company) => {
         displayCompany(company);
     });
@@ -34,10 +43,10 @@ function displayCompany(companyData) {
     img.setAttribute("class", "companyLogo");
     img.setAttribute("src", companyData["img"]);
     img.setAttribute("alt", companyData["name"]);
-    if(companyData["white"]){
+    if (companyData["white"]) {
         imgWrapper.setAttribute("style", "background: white;");
     }
-    if(companyData["svg"]){
+    if (companyData["svg"]) {
         img.setAttribute("style", "height: 100%");
     }
     imgWrapper.appendChild(img);
@@ -61,8 +70,7 @@ function displayCompany(companyData) {
         interview.setAttribute("href", companyData["interview"]["signupLink"]);
         interview.appendChild(document.createTextNode("Meld deg på speedintervju"));
         company.appendChild(interview);
-    }
-    else {
+    } else {
         let interview = document.createElement("p");
         interview.setAttribute("class", "speedInterview");
         interview.appendChild(document.createTextNode("Har ikke speedintervju"));
