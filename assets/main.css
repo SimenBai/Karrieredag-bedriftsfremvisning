@@ -173,6 +173,15 @@ footer {
     align-items: center;
 }
 
+#overlayX {
+    position: fixed;
+    font-size: 2rem;
+    top: 0;
+    margin: 2rem;
+    right: 0;
+    cursor: pointer;
+}
+
 #overlayImg {
     max-width: 66.66%;
     max-height: 10vh;
@@ -186,6 +195,12 @@ footer {
 #overlayDesc {
     font-size: 1.25rem;
     margin: 0;
+}
+
+@media only screen and (max-width: 1900px) {
+    .overlay {
+        width: 80%;
+    }
 }
 
 @media only screen and (max-width: 1025px) {
