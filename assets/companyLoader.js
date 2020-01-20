@@ -30,6 +30,10 @@ function addCompanies(json) {
     companies.forEach((company) => {
         displayCompany(company);
     });
+
+    document.getElementById("overlayWrapper").addEventListener("click", () => {
+        document.getElementById("overlayWrapper").style.display = "none";
+    })
 }
 
 function displayCompany(companyData) {
@@ -56,13 +60,38 @@ function displayCompany(companyData) {
     name.appendChild(document.createTextNode(companyData["name"]));
     company.appendChild(name);
 
-    let blockQuote = document.createElement("textarea");
-    blockQuote.setAttribute("readonly", "");
+    let popup = document.createElement("p");
     if (!companyData["description"]) {
-        companyData["description"] = "Ingen beskrivelse";
+        popup.appendChild(document.createTextNode("Ingen beskrivelse"));
+    } else {
+        popup.appendChild(document.createTextNode("Les mer..."));
+        popup.setAttribute("class", "readMore");
+        popup.addEventListener("click", () => {
+            document.getElementById("overlayWrapper").style.display = "flex";
+            let img = document.getElementById("overlayImg");
+            img.setAttribute("src", companyData["img"]);
+            img.setAttribute("alt", companyData["name"]);
+
+            document.getElementById("overlayName").innerHTML = companyData["name"];
+            document.getElementById("overlayDesc").innerHTML = companyData["description"];
+
+            let imgWrapper = document.getElementById("overlayImgWrapper");
+
+            if (companyData["white"]) {
+                imgWrapper.setAttribute("style", "background: white;");
+            } else {
+                imgWrapper.setAttribute("style", "background: transparent;");
+            }
+            if (companyData["svg"]) {
+                img.setAttribute("style", "height: 100%");
+            } else {
+                img.setAttribute("style", "height: auto");
+            }
+            scroll(0, 0);
+        });
     }
-    blockQuote.appendChild(document.createTextNode(companyData["description"]));
-    company.appendChild(blockQuote);
+
+    company.appendChild(popup);
 
     if (companyData["interview"]) {
         let interview = document.createElement("a");
